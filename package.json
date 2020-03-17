@@ -1,0 +1,15 @@
+{
+  "name": "funfun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "teste.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "jest": "^21.2.1"
+  }
+}
