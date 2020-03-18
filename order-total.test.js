@@ -13,7 +13,6 @@ it('calls vaptapi.com correctly', () => {
 
         expect(opts.headers.apikey).toBe('key123')
         expect(url).toBe('https://vatapi.com/v1/country-code-check?code=DE')
-        isFakeFetchCalled = true
         return Promise.resolve({
           json: () => Promise.resolve({
             rates: {
@@ -29,10 +28,7 @@ it('calls vaptapi.com correctly', () => {
         items: [
             { 'name': 'Dragon Waffles', price: 20, quantity: 2 }
         ]
-    }).then(result => {
-      expect(result).toBe(20*2*1.19)
-        expect(isFakeFetchCalled).toBe(true)
-    })
+    }).then(result =>  expect(result).toBe(20*2*1.19))
 })
 
 it('Quantity',() =>
