@@ -23,14 +23,28 @@ it('calls vaptapi.com correctly', () => {
           }) 
         })
     }
+    const fakeFetch2 = jest.fn().mockReturnValue(Promise.resolve({
+      json: () => Promise.resolve({
+        rates: {
+          standard:{
+             value: 19
+          }
+        }
+      }) 
+    }))
     return orderTotal(fakeFetch, fakeProcess,{
         country: 'DE',
         items: [
             { 'name': 'Dragon Waffles', price: 20, quantity: 2 }
         ]
-    }).then(result =>  expect(result).toBe(20*2*1.19))
+    }).then(result => {
+      expect(result).toBe(20*2*1.19)
+      expect(fakeFetch2).toBeCalledWith[
+        'https://vatapi.com/v1/country-code-check?code=DE',
+        { "headers" : { "apikey":"key123" } }]
+    })
 })
-
+ 
 it('Quantity',() =>
   orderTotal(null, null,{
       items:[
